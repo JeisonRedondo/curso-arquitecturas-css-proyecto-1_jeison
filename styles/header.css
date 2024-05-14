@@ -1,16 +1,49 @@
-#nav-list li:last-child {
+/*Aqui vuelve independiente esta modificación para implementarla de manera aparte en cualquier elemento del html*/
+.hidden {
   /* QUITAR CUANDO AGREGAMOS EXTRAS */
   display: none;
 }
 
-/*Aqui empieza mi ejercicio para entender como modificar el codigo*/
-
-.navbar {
+.header {
+  /* general distribution */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: var(--dark-jungle-green);
+  align-items: center;
+  justify-items: center;
+  color: white;
+  width: 100%;
+  height: 10rem;
+  position: sticky;
+  font-size: var(--medium);
   z-index: 1;
+}
 
+.header__logo {
+  height: 100%;
+  max-width: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Denotamos como reemplaza esta asignacion basada en etiquetas creando una clase apropiada para la misma*/
+.header__img {
+  /* general imgs size */
+  height: 50%;
+  object-fit: cover;
+}
+
+#menu-icon {
+  cursor: pointer;
+}
+/*Especificamos que es la fuente para el nombre y ademas agregamos el identificativo del bloque (header)*/
+.header__name {
+  /* size of name on header */
+  font-size: var(--xlg);
+}
+
+.header__nav {
   width: 100%;
   height: 100%;
   display: flex;
@@ -18,35 +51,7 @@
   align-items: center;
 }
 
-.navbar__logo {
-  height: 50%;
-  max-width: 30rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.navbar__name {
-  font-size: var(--xlg);
-  justify-self: start;
-}
-
-.navbar__menu-icon {
-  height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  z-index: 2;
-  right: 30px;
-}
-
-.navbar__menu-icon--show {
-  filter: invert(75%) sepia(47%) saturate(2805%) hue-rotate(168deg)
-    brightness(87%) contrast(102%);
-}
-
-.navbar span {
+.header__span {
   /* img container styles */
   height: 92%;
   display: flex;
@@ -56,7 +61,7 @@
   z-index: 2;
 }
 
-.nav-list {
+.header__list {
   /* option list styles */
   height: 75vh;
   width: 100vw;
@@ -73,47 +78,41 @@
   transition: transform var(--normal-transition-time);
 }
 
-.nav-list--show {
-  /* show list */
+.header__list--show {
   transform: translateY(0%);
   box-shadow: 0px 15px 10px -15px rgb(0, 0, 0);
 }
 
-.menu-icon-img--show {
-  /* change img colors when nav list is show up */
+.header__image--show {
   filter: invert(75%) sepia(47%) saturate(2805%) hue-rotate(168deg)
     brightness(87%) contrast(102%);
 }
 
-.navbar ul li a {
+.header__link {
   /* a base styles */
   text-decoration: none;
   color: white;
 }
-
-.navbar ul li,
-.navbar ul li a {
+/*Aca la profe empieza a agregar codigo que no viene en el trabajo original*/
+.header__element {
+  transition: var(--short-transition-time);
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.navbar ul li {
-  transition: var(--short-transition-time);
   /* border-bottom: 0.4rem solid var(--blue-sapphire); */
 }
 
 @media (any-hover: hover) {
-  .navbar ul li:hover {
+  .header__element:hover {
     /* hover for list options */
     background-color: var(--blue-sapphire);
   }
 }
 
 @media only screen and (min-width: 768px) {
-  header {
+  .header {
     /* general distribution */
     display: grid;
     grid-template-columns: 1fr 1fr 3fr;
@@ -122,12 +121,12 @@
     box-shadow: 0px 10px 12px 0px var(--dark-jungle-green-transparency);
   }
 
-  .navbar span {
+  .header__span {
     /* img container styles */
     display: none;
   }
 
-  .nav-list {
+  .header__list {
     /* option list styles */
     position: static;
     height: 100%;
@@ -135,17 +134,17 @@
     list-style: none;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     transform: translateY(0%);
   }
 
-  .navbar ul li a {
+  .header__link {
     /* a base styles */
     font-weight: lighter;
   }
 
-  .nav-list--show {
+  .header__list--show {
     /* show list */
     transform: translateY(0%);
     box-shadow: none;
